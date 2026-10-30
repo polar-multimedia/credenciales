@@ -548,6 +548,55 @@ body.phone-on #num::after{content:" · iPhone";color:#3ce3c3}
 .aspid .k{font-size:16px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#e8e038;max-width:220px;line-height:1.3}
 .aspid .st{display:flex;align-items:baseline;gap:12px;font-size:22px;font-weight:700;color:#fff}
 .aspid .st b{font-size:64px;font-weight:800;line-height:1}
+
+/* ---------- álbum C-Tech ---------- */
+.alf{display:flex;gap:10px;align-items:center;margin-top:26px;flex-wrap:wrap}
+.alf button{font:inherit;font-size:19px;font-weight:700;color:#fff;background:rgba(14,35,49,.7);border:1.5px solid rgba(255,255,255,.22);border-radius:999px;padding:8px 18px;cursor:pointer;transition:all .25s}
+.alf button b{font-weight:800;color:var(--cyan);margin-left:4px}
+.alf button.on,.alf button:hover{background:#E12287;border-color:#E12287}
+.alf button.on b,.alf button:hover b{color:#fff}
+.alh{margin-left:auto;font-size:18px;font-weight:700;color:rgba(255,255,255,.6)}
+.alg{display:grid;grid-template-columns:repeat(10,1fr);gap:12px;margin-top:22px}
+.alc{position:relative;aspect-ratio:9/16;border-radius:14px;overflow:hidden;border:1.5px solid rgba(255,255,255,.18);background:#0b1b26;padding:0;cursor:pointer;transition:transform .3s,border-color .3s,opacity .3s}
+.alc img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.alc:hover{transform:translateY(-4px) scale(1.03);border-color:#E12287}
+.alc.off{opacity:.12;pointer-events:none}
+.alc .ald{position:absolute;left:8px;bottom:8px;font-size:15px;font-weight:800;color:#fff;background:rgba(0,0,0,.6);padding:3px 8px;border-radius:7px}
+.alc .alr{position:absolute;right:8px;bottom:8px;font-size:12px;font-weight:800;letter-spacing:.06em;color:#fff;background:#E12287;padding:4px 7px;border-radius:7px}
+.alc .alk{position:absolute;right:8px;top:8px;font-size:13px;font-weight:800;color:#fff;background:rgba(0,0,0,.6);padding:4px 8px;border-radius:7px}
+#albox{position:fixed;inset:0;z-index:30;background:rgba(3,10,18,.94);display:none;align-items:center;justify-content:center;gap:4vw;padding:4vh 5vw;color:#fff;font-family:inherit}
+#albox.on{display:flex}
+#albox .am{position:relative;height:86vh;max-width:56vw;display:flex;align-items:center;justify-content:center}
+#albox .am video,#albox .am img{max-height:86vh;max-width:56vw;border-radius:16px;display:block;box-shadow:0 30px 80px rgba(0,0,0,.6);background:#000}
+#albox .ai{width:min(440px,34vw)}
+#albox .ai .alkk{font-size:14px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#ff5db5}
+#albox .ai h3{font-size:30px;font-weight:800;line-height:1.2;margin:12px 0 14px}
+#albox .ai p{font-size:18px;font-weight:600;line-height:1.5;color:rgba(255,255,255,.85);margin:0}
+#albox .ai .alpl{display:inline-block;margin-top:16px;font-size:14px;font-weight:700;color:var(--cyan);border:1.5px solid rgba(0,200,214,.5);border-radius:999px;padding:5px 12px}
+#albox .ai .allg{margin-top:20px;font-size:13px;font-weight:600;color:rgba(255,255,255,.55);line-height:1.45}
+#albox .ai .alnav{display:flex;gap:10px;margin-top:26px}
+#albox button{font:inherit;cursor:pointer}
+#albox .alnav button{font-size:16px;font-weight:700;color:#fff;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.25);border-radius:999px;padding:9px 16px}
+#albox .alnav button:hover{border-color:#E12287;background:#E12287}
+#albox .ax{position:absolute;right:22px;top:16px;width:46px;height:46px;border-radius:50%;border:1.5px solid rgba(255,255,255,.35);background:rgba(0,0,0,.4);color:#fff;font-size:24px;line-height:1}
+#albox .alsa{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;border:0;background:rgba(0,0,0,.55);color:#fff;font-size:22px}
+#albox .alsa.l{left:-58px}#albox .alsa.r{right:-58px}
+#albox .aldots{position:absolute;bottom:-28px;left:0;right:0;display:flex;justify-content:center;gap:7px}
+#albox .aldots i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.3)}
+#albox .aldots i.on{background:#E12287}
+@media (max-width:900px){#albox{flex-direction:column;gap:2vh;padding:7vh 6vw 3vh;overflow:auto;justify-content:flex-start}#albox .am{height:auto;max-width:88vw}#albox .am video,#albox .am img{max-height:60vh;max-width:88vw}#albox .ai{width:100%}#albox .ai h3{font-size:22px}#albox .alsa.l{left:4px}#albox .alsa.r{right:4px}}
+/* ---------- menú de secciones ---------- */
+#secbtn{position:fixed;left:12px;top:10px;z-index:24;font-family:inherit;font-size:14px;font-weight:800;letter-spacing:.04em;color:#fff;background:rgba(1,21,80,.55);border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:7px 14px 7px 12px;cursor:pointer;opacity:.75;transition:opacity .3s,background .3s;backdrop-filter:blur(6px)}
+#secbtn:hover,#secbtn.open{opacity:1;background:#E12287;border-color:#E12287}
+body.clean #secbtn{opacity:.12}
+#secmenu{position:fixed;left:12px;top:50px;z-index:24;width:320px;max-height:calc(100vh - 70px);overflow:auto;background:rgba(3,12,28,.96);border:1px solid rgba(255,255,255,.16);border-radius:16px;padding:10px;display:none;box-shadow:0 24px 60px rgba(0,0,0,.5);font-family:inherit}
+#secmenu.on{display:block}
+#secmenu a{display:flex;gap:12px;align-items:baseline;padding:11px 12px;border-radius:11px;color:#fff;text-decoration:none;cursor:pointer}
+#secmenu a:hover{background:rgba(255,255,255,.08)}
+#secmenu a.cur{background:rgba(225,34,135,.22)}
+#secmenu a i{font-style:normal;font-size:13px;font-weight:800;color:#ff5db5;min-width:22px}
+#secmenu a b{font-size:16px;font-weight:800;display:block}
+#secmenu a span{font-size:13px;font-weight:600;color:rgba(255,255,255,.6)}
 </style>
 </head>
 <body>
@@ -744,6 +793,16 @@ body.phone-on #num::after{content:" · iPhone";color:#3ce3c3}
   </div>
 </section>
 
+<section class="slide dense pz" id="album" data-scene="plain" data-shade="none" data-chapter="Contenido"
+ data-notes="Álbum real de octubre 2026 de C-Tech: lo que la línea produjo y se entregó a Carnot para el mes. 11 reels, 3 posts, 2 carruseles y 4 stories en Facebook e Instagram, con el legal de Cofepris en cada pieza y las fuentes citadas (NIH). Toca cualquier pieza para verla en grande; los reels se reproducen con sonido. Los filtros de arriba separan por formato. Con las flechas recorres las piezas dentro del álbum; Esc lo cierra.">
+  <div class="col" style="max-width:1560px">
+    <div class="eyebrow m"><img class="pm" src="../comun/img/bear.png" alt="">Carnot · C-Tech · octubre 2026 · piezas reales</div>
+    <h2>Un mes de la línea: <em>20 piezas</em> que salieron en octubre.</h2>
+    <div class="alf"><button type="button" class="on" data-f="all">Todas <b>20</b></button><button type="button" data-f="reel">Reels <b>11</b></button><button type="button" data-f="post">Posts <b>3</b></button><button type="button" data-f="car">Carruseles <b>2</b></button><button type="button" data-f="story">Stories <b>4</b></button><span class="alh">Toca una pieza para verla</span></div>
+    <div class="alg"><button class="alc" type="button" data-i="0" data-t="reel"><img src="../comun/img/a-reel-01oct-p.webp" alt="" loading="lazy"><span class="ald">1 oct</span><span class="alr">FB</span><span class="alk">▶</span></button><button class="alc" type="button" data-i="1" data-t="post"><img src="../comun/img/a-post-03oct.webp" alt="" loading="lazy"><span class="ald">3 oct</span><span class="alr">IG</span></button><button class="alc" type="button" data-i="2" data-t="reel"><img src="../comun/img/a-reel-07oct-p.webp" alt="" loading="lazy"><span class="ald">7 oct</span><span class="alr">IG</span><span class="alk">▶</span></button><button class="alc" type="button" data-i="3" data-t="reel"><img src="../comun/img/a-reel-09oct-p.webp" alt="" loading="lazy"><span class="ald">9 oct</span><span class="alr">FB</span><span class="alk">▶</span></button><button class="alc" type="button" data-i="4" data-t="story"><img src="../comun/img/a-story-11oct.webp" alt="" loading="lazy"><span class="ald">11 oct</span><span class="alr">FB · IG</span></button><button class="alc" type="button" data-i="5" data-t="car"><img src="../comun/img/a-car13-1.webp" alt="" loading="lazy"><span class="ald">13 oct</span><span class="alr">FB</span><span class="alk">1/5</span></button><button class="alc" type="button" data-i="6" data-t="reel"><img src="../comun/img/a-reel-15oct-p.webp" alt="" loading="lazy"><span class="ald">15 oct</span><span class="alr">IG</span><span class="alk">▶</span></button><button class="alc" type="button" data-i="7" data-t="reel"><img src="../comun/img/a-reel-17oct-p.webp" alt="" loading="lazy"><span class="ald">17 oct</span><span class="alr">FB</span><span class="alk">▶</span></button><button class="alc" type="button" data-i="8" data-t="post"><img src="../comun/img/a-post-19oct.webp" alt="" loading="lazy"><span class="ald">19 oct</span><span class="alr">IG</span></button><button class="alc" type="button" data-i="9" data-t="reel"><img src="../comun/img/a-reel-20oct-p.webp" alt="" loading="lazy"><span class="ald">20 oct</span><span class="alr">FB</span><span class="alk">▶</span></button><button class="alc" type="button" data-i="10" data-t="reel"><img src="../comun/img/a-reel-22oct-p.webp" alt="" loading="lazy"><span class="ald">22 oct</span><span class="alr">IG</span><span class="alk">▶</span></button><button class="alc" type="button" data-i="11" data-t="post"><img src="../comun/img/a-post-24oct.webp" alt="" loading="lazy"><span class="ald">24 oct</span><span class="alr">FB</span></button><button class="alc" type="button" data-i="12" data-t="reel"><img src="../comun/img/a-reel-26oct-p.webp" alt="" loading="lazy"><span class="ald">26 oct</span><span class="alr">IG</span><span class="alk">▶</span></button><button class="alc" type="button" data-i="13" data-t="reel"><img src="../comun/img/a-reel-27oct-p.webp" alt="" loading="lazy"><span class="ald">27 oct</span><span class="alr">FB</span><span class="alk">▶</span></button><button class="alc" type="button" data-i="14" data-t="story"><img src="../comun/img/a-story-28oct.webp" alt="" loading="lazy"><span class="ald">28 oct</span><span class="alr">FB · IG</span></button><button class="alc" type="button" data-i="15" data-t="reel"><img src="../comun/img/a-reel-29oct-p.webp" alt="" loading="lazy"><span class="ald">29 oct</span><span class="alr">IG</span><span class="alk">▶</span></button><button class="alc" type="button" data-i="16" data-t="reel"><img src="../comun/img/a-reel-31oct-p.webp" alt="" loading="lazy"><span class="ald">31 oct</span><span class="alr">IG</span><span class="alk">▶</span></button><button class="alc" type="button" data-i="17" data-t="car"><img src="../comun/img/a-promo-1.webp" alt="" loading="lazy"><span class="ald">Promo</span><span class="alr">IG</span><span class="alk">1/5</span></button><button class="alc" type="button" data-i="18" data-t="story"><img src="../comun/img/a-story-passalud.webp" alt="" loading="lazy"><span class="ald">Extra</span><span class="alr">FB · IG</span></button><button class="alc" type="button" data-i="19" data-t="story"><img src="../comun/img/a-story-amazon.webp" alt="" loading="lazy"><span class="ald">Extra</span><span class="alr">FB · IG</span></button></div>
+  </div>
+</section>
+
 <!-- ================= AGENTES ================= -->
 <section class="slide pz chapter" data-scene="plain" data-shade="none" data-chapter="Agentes"
  data-notes="Puente. Lo que pasa en el evento puede seguir pasando después, y la tecnología la hacemos nosotros. Ahora vamos a probar tres cosas en vivo: un agente para médicos, un simulador para la fuerza de ventas y un hub.">
@@ -876,6 +935,8 @@ body.phone-on #num::after{content:" · iPhone";color:#3ce3c3}
 <div id="hud"><div id="tracker" class="off"></div><div id="steps"></div></div>
 <div id="num"></div>
 <button id="home" title="Volver al inicio" aria-label="Volver al inicio">⌂</button>
+<div id="albox" aria-hidden="true"><button class="ax" type="button" aria-label="Cerrar">×</button><div class="am"></div><div class="ai"></div></div>
+<button id="secbtn" type="button" aria-label="Ir a una sección">☰ Secciones</button><nav id="secmenu"></nav>
 <div id="black"></div>
 <div id="loading">Preparando presentación</div>
 <div id="help"><table>
@@ -3378,6 +3439,18 @@ function toggleIndex(){
   box.innerHTML=h;box.classList.add('on');[].forEach.call(box.querySelectorAll('a'),function(a){a.onclick=function(){box.classList.remove('on');go(+a.dataset.i);};});
 }
 
+/* ---------- menú de secciones ---------- */
+(function(){var LB={'Apertura':'Quiénes somos','Eventos':'Eventos','Contenido':'Audiovisual y contenido','Agentes':'Agentes y plataformas','Ventajas':'Ventajas, premios y siguiente paso'};
+var btn=document.getElementById('secbtn'),menu=document.getElementById('secmenu');
+function build(){var ch=[],seen={};slides.forEach(function(s,i){var c=s.dataset.chapter;if(!seen[c]){seen[c]={name:c,first:i,n:0};ch.push(seen[c]);}seen[c].n++;});
+  var curCh=slides[cur].dataset.chapter,h='';ch.forEach(function(c,k){h+='<a data-i="'+c.first+'" class="'+(c.name===curCh?'cur':'')+'"><i>'+('0'+(k+1)).slice(-2)+'</i><div><b>'+(LB[c.name]||c.name)+'</b><span>'+c.n+(c.n===1?' lámina':' láminas')+'</span></div></a>';});
+  menu.innerHTML=h;[].forEach.call(menu.querySelectorAll('a'),function(a){a.onclick=function(e){e.stopPropagation();hide();go(+a.dataset.i);};});}
+function hide(){menu.classList.remove('on');btn.classList.remove('open');}
+btn.addEventListener('click',function(e){e.stopPropagation();if(menu.classList.contains('on'))hide();else{build();menu.classList.add('on');btn.classList.add('open');}btn.blur();});
+menu.addEventListener('wheel',function(e){e.stopPropagation();},{passive:true});
+addEventListener('click',function(e){if(menu.classList.contains('on')&&!menu.contains(e.target)&&e.target!==btn)hide();});
+addEventListener('keydown',function(e){if(menu.classList.contains('on')&&e.key==='Escape'){hide();e.stopImmediatePropagation();}},true);
+})();
 /* ---------- vista del presentador ---------- */
 var pres=null;
 function info(){var s=slides[cur];return {cur:cur+1,total:slides.length,step:step,max:maxStep(s),chapter:s.dataset.chapter,title:titleOf(s),next:titleOf(slides[cur+1]),notes:s.dataset.notes||''};}
@@ -3440,6 +3513,35 @@ var FI=document.getElementById('fulli');
 [].forEach.call(document.querySelectorAll('[data-gimg]'),function(b){b.addEventListener('click',function(e){e.stopPropagation();FI.querySelector('img').src=b.querySelector('img').src;FI.classList.add('on');b.blur();});});
 FI.addEventListener('click',function(){FI.classList.remove('on');});
 addEventListener('keydown',function(e){if(FI.classList.contains('on')){e.stopImmediatePropagation();e.preventDefault();FI.classList.remove('on');}},true);
+})();</script>
+
+<script>(function(){
+/* ---------- álbum C-Tech octubre ---------- */
+var D=[{"t": "reel", "tipo": "Reel", "d": "1 oct", "r": "Facebook", "pil": "Lifestyle · Reflexión", "h": "Mientras duermes, tus huesos trabajan.", "c": "Tus huesos trabajan mientras tú duermes. ¿Los estás tomando en cuenta?", "m": [{"v": "../comun/media/a-reel-01oct.mp4", "p": "../comun/img/a-reel-01oct-p.webp"}]}, {"t": "post", "tipo": "Post", "d": "3 oct", "r": "Instagram", "pil": "Lifestyle · Producto", "h": "Tu salud ósea, todos los días.", "c": "La salud ósea es un hábito, no un momento. Consulta a tu médico.", "m": [{"i": "../comun/img/a-post-03oct.webp"}]}, {"t": "reel", "tipo": "Reel", "d": "7 oct", "r": "Instagram", "pil": "Comunidad · Reflexión", "h": "Hay cosas que hacemos todos los días sin pensarlo.", "c": "Nuestros hábitos cotidianos también cuentan. ¿Cuánto movimiento forma parte de tu día?", "m": [{"v": "../comun/media/a-reel-07oct.mp4", "p": "../comun/img/a-reel-07oct-p.webp"}]}, {"t": "reel", "tipo": "Reel", "d": "9 oct", "r": "Facebook", "pil": "Engagement · Marca", "h": "¿A qué edad empezaste a pensar en tus huesos?", "c": "No hay una edad correcta para pensar en tus huesos. Hay un momento. ¿Cuándo fue el tuyo?", "m": [{"v": "../comun/media/a-reel-09oct.mp4", "p": "../comun/img/a-reel-09oct-p.webp"}]}, {"t": "story", "tipo": "Story", "d": "11 oct", "r": "Facebook e Instagram", "pil": "Lifestyle · Hábitos", "h": "¿Cuándo fue la última vez que pensaste en tu salud ósea?", "c": "Story con encuesta: «La semana pasada» o «Ahora que lo preguntas».", "m": [{"i": "../comun/img/a-story-11oct.webp"}]}, {"t": "car", "tipo": "Carrusel", "d": "13 oct", "r": "Facebook", "pil": "Educativo · Curiosidad", "h": "Una semana. Cinco gestos para tu salud ósea.", "c": "Muévete, infórmate, aprovecha la luz natural y habla con tu médico. ¿Cuál de estos ya haces?", "m": [{"i": "../comun/img/a-car13-1.webp"}, {"i": "../comun/img/a-car13-2.webp"}, {"i": "../comun/img/a-car13-3.webp"}, {"i": "../comun/img/a-car13-4.webp"}, {"i": "../comun/img/a-car13-5.webp"}]}, {"t": "reel", "tipo": "Reel", "d": "15 oct", "r": "Instagram", "pil": "Educativo · Engagement", "h": "Hay algo que le pasa a tus huesos que nadie te cuenta.", "c": "La masa ósea alcanza su punto más alto alrededor de los 30 años. Fuente: NIH, Office of Dietary Supplements.", "m": [{"v": "../comun/media/a-reel-15oct.mp4", "p": "../comun/img/a-reel-15oct-p.webp"}]}, {"t": "reel", "tipo": "Reel", "d": "17 oct", "r": "Facebook", "pil": "Educativo · Dato", "h": "Reto: ¿cuántas fuentes de calcio tuviste hoy?", "c": "Nivel experta: tofu y sardinas. Nivel todos los días: como se pueda. Fuente: NIH, Office of Dietary Supplements.", "m": [{"v": "../comun/media/a-reel-17oct.mp4", "p": "../comun/img/a-reel-17oct-p.webp"}]}, {"t": "post", "tipo": "Post", "d": "19 oct", "r": "Instagram", "pil": "Lifestyle · Hábitos", "h": "El 99 % del calcio del cuerpo está en los huesos y los dientes.", "c": "El 1 % restante circula en la sangre y cumple funciones esenciales. Fuente: NIH, Office of Dietary Supplements.", "m": [{"i": "../comun/img/a-post-19oct.webp"}]}, {"t": "reel", "tipo": "Reel", "d": "20 oct", "r": "Facebook", "pil": "Lifestyle · Reflexión", "h": "Hay algo que hacemos varias horas al día y que el cuerpo registra.", "c": "¿Cómo está tu postura ahora mismo? También forma parte del cuidado de tu salud musculoesquelética.", "m": [{"v": "../comun/media/a-reel-20oct.mp4", "p": "../comun/img/a-reel-20oct-p.webp"}]}, {"t": "reel", "tipo": "Reel", "d": "22 oct", "r": "Instagram", "pil": "Educativo · Lifestyle", "h": "A los huesos nunca les hablamos.", "c": "Los huesos te sostienen desde siempre. ¿Cuándo fue la última vez que pensaste en ellos?", "m": [{"v": "../comun/media/a-reel-22oct.mp4", "p": "../comun/img/a-reel-22oct-p.webp"}]}, {"t": "post", "tipo": "Post", "d": "24 oct", "r": "Facebook", "pil": "Educativo · Curiosidad", "h": "El movimiento también le habla a tus huesos.", "c": "La actividad física es uno de los factores estudiados en salud ósea. Habla con tu médico.", "m": [{"i": "../comun/img/a-post-24oct.webp"}]}, {"t": "reel", "tipo": "Reel", "d": "26 oct", "r": "Instagram", "pil": "Venta en línea", "h": "POV: quieres comprar C-Tech sin complicarte.", "c": "Del feed a la compra en línea, en cinco escenas.", "m": [{"v": "../comun/media/a-reel-26oct.mp4", "p": "../comun/img/a-reel-26oct-p.webp"}]}, {"t": "reel", "tipo": "Reel", "d": "27 oct", "r": "Facebook", "pil": "Educativo · Curiosidad", "h": "Sobre el calcio se dice mucho. No todo es cierto.", "c": "Tres mitos del calcio, desmentidos con su fuente. Fuente: NIH, Office of Dietary Supplements.", "m": [{"v": "../comun/media/a-reel-27oct.mp4", "p": "../comun/img/a-reel-27oct-p.webp"}]}, {"t": "story", "tipo": "Story", "d": "28 oct", "r": "Facebook e Instagram", "pil": "Engagement · Lifestyle", "h": "¿Cómo describes tu nivel de actividad física?", "c": "Story con encuesta: «Me muevo bastante» o «Más bien soy de las sedentarias».", "m": [{"i": "../comun/img/a-story-28oct.webp"}]}, {"t": "reel", "tipo": "Reel", "d": "29 oct", "r": "Instagram", "pil": "Lifestyle · Reflexión", "h": "¿Qué tal les fue a tus huesos esta semana?", "c": "Sin examen, solo una pregunta honesta.", "m": [{"v": "../comun/media/a-reel-29oct.mp4", "p": "../comun/img/a-reel-29oct-p.webp"}]}, {"t": "reel", "tipo": "Reel", "d": "31 oct", "r": "Instagram", "pil": "Lifestyle · Reflexión", "h": "Hay cuidados que no se ven.", "c": "El cuidado invisible también importa. ¿Cuál es el tuyo?", "m": [{"v": "../comun/media/a-reel-31oct.mp4", "p": "../comun/img/a-reel-31oct-p.webp"}]}, {"t": "car", "tipo": "Carrusel", "d": "Promo", "r": "Instagram", "pil": "Punto de venta", "h": "¿Dos C-Tech a precio especial?", "c": "Promoción de dos piezas en farmacias, válida hasta el 31 de octubre.", "m": [{"i": "../comun/img/a-promo-1.webp"}, {"i": "../comun/img/a-promo-2.webp"}, {"i": "../comun/img/a-promo-3.webp"}, {"i": "../comun/img/a-promo-4.webp"}, {"i": "../comun/img/a-promo-5.webp"}]}, {"t": "story", "tipo": "Story", "d": "Extra", "r": "Facebook e Instagram", "pil": "Venta en línea", "h": "¿C-Tech? Lo encontramos por ti.", "c": "Story con liga directa a la compra en línea.", "m": [{"i": "../comun/img/a-story-passalud.webp"}]}, {"t": "story", "tipo": "Story", "d": "Extra", "r": "Facebook e Instagram", "pil": "Venta en línea", "h": "Un pendiente menos en tu lista.", "c": "Story con liga directa a la compra en Amazon.", "m": [{"i": "../comun/img/a-story-amazon.webp"}]}];
+var B=document.getElementById('albox'),M=B.querySelector('.am'),I=B.querySelector('.ai'),cur=-1,sl=0,list=[];
+function visible(){return [].slice.call(document.querySelectorAll('#album .alc')).filter(function(c){return !c.classList.contains('off');}).map(function(c){return +c.dataset.i;});}
+function render(){var p=D[cur],m=p.m[sl];
+  if(m.v){M.innerHTML='<video src="'+m.v+'" poster="'+m.p+'" controls playsinline autoplay></video>';var v=M.querySelector('video');v.volume=1;v.play().catch(function(){v.muted=true;v.play().catch(function(){});});}
+  else{var h='<img src="'+m.i+'" alt="">';if(p.m.length>1){h+='<button class="alsa l" type="button" aria-label="Anterior">‹</button><button class="alsa r" type="button" aria-label="Siguiente">›</button><div class="aldots">';for(var k=0;k<p.m.length;k++)h+='<i class="'+(k===sl?'on':'')+'"></i>';h+='</div>';}M.innerHTML=h;
+    var l=M.querySelector('.alsa.l'),r=M.querySelector('.alsa.r');if(l)l.onclick=function(e){e.stopPropagation();step(-1);};if(r)r.onclick=function(e){e.stopPropagation();step(1);};}
+  var pos=list.indexOf(cur);
+  I.innerHTML='<div class="alkk">'+p.tipo+' · '+p.d+' · '+p.r+'</div><h3>'+p.h+'</h3><p>'+p.c+'</p><span class="alpl">'+p.pil+'</span><div class="allg">Cada pieza lleva el legal de Cofepris: «Este es un medicamento. Permiso de publicidad: 223300201B1498. En caso de duda consulte a su médico.»</div><div class="alnav"><button type="button" data-n="-1">‹ Anterior</button><button type="button" data-n="1">Siguiente ›</button><span style="align-self:center;font-size:14px;font-weight:700;color:rgba(255,255,255,.5)">'+(pos+1)+' de '+list.length+'</span></div>';
+  [].forEach.call(I.querySelectorAll('[data-n]'),function(b){b.onclick=function(e){e.stopPropagation();piece(+b.dataset.n);};});}
+function open(i){list=visible();cur=i;sl=0;B.classList.add('on');render();}
+function close(){B.classList.remove('on');M.innerHTML='';window.focus();}
+function piece(d){var pos=list.indexOf(cur);pos=(pos+d+list.length)%list.length;cur=list[pos];sl=0;render();}
+function step(d){var n=D[cur].m.length;if(n>1){var t=sl+d;if(t>=0&&t<n){sl=t;render();return;}}piece(d);}
+[].forEach.call(document.querySelectorAll('#album .alc'),function(c){c.addEventListener('click',function(e){e.stopPropagation();open(+c.dataset.i);c.blur();});});
+[].forEach.call(document.querySelectorAll('#album .alf button'),function(b){b.addEventListener('click',function(e){e.stopPropagation();var f=b.dataset.f;
+  [].forEach.call(document.querySelectorAll('#album .alf button'),function(x){x.classList.toggle('on',x===b);});
+  [].forEach.call(document.querySelectorAll('#album .alc'),function(c){c.classList.toggle('off',f!=='all'&&c.dataset.t!==f);});b.blur();});});
+B.querySelector('.ax').onclick=function(e){e.stopPropagation();close();};
+B.addEventListener('click',function(e){if(e.target===B)close();});
+B.addEventListener('wheel',function(e){e.stopPropagation();},{passive:true});
+addEventListener('keydown',function(e){if(!B.classList.contains('on'))return;e.stopImmediatePropagation();
+  if(e.key==='Escape')close();else if(['ArrowRight','ArrowDown','PageDown'].indexOf(e.key)>=0){e.preventDefault();step(1);}
+  else if(['ArrowLeft','ArrowUp','PageUp'].indexOf(e.key)>=0){e.preventDefault();step(-1);}
+  else if(e.key===' '){e.preventDefault();var v=M.querySelector('video');if(v){if(v.paused)v.play();else v.pause();}else step(1);}},true);
 })();</script>
 </body>
 </html>
