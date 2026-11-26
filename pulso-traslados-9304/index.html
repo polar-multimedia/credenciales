@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#0b1b2e">
+<title>PULSO · Traslados</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b1b2e;--card:#12263d;--card2:#183150;--ink:#eef4fb;--mute:#9db1c8;--line:#24405f;--ice:#7fd3ff;--ok:#3ddc97;--warn:#ffc857;--bad:#ff6b6b;--ink-dark:#0b1b2e}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:Manrope,system-ui,sans-serif;font-size:15px;line-height:1.45;padding-bottom:40px}
+header{position:sticky;top:0;z-index:5;background:linear-gradient(#0b1b2e,#0b1b2ef2);padding:14px 16px 10px;border-bottom:1px solid var(--line)}
+.top{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+h1{font-size:18px;font-weight:800;letter-spacing:.2px}
+h1 span{color:var(--ice)}
+#clock{font-weight:700;color:var(--mute);font-variant-numeric:tabular-nums}
+.sub{color:var(--mute);font-size:12.5px;margin-top:2px}
+nav{display:flex;gap:6px;margin-top:10px;overflow-x:auto;scrollbar-width:none}
+nav button{flex:0 0 auto;background:var(--card);color:var(--mute);border:1px solid var(--line);border-radius:999px;padding:7px 13px;font:600 13px Manrope,sans-serif}
+nav button.on{background:var(--ice);color:var(--ink-dark);border-color:var(--ice)}
+main{padding:12px 16px;max-width:720px;margin:0 auto}
+.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:12px}
+.summary div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px;text-align:center}
+.summary b{display:block;font-size:20px;font-weight:800}
+.summary small{color:var(--mute);font-size:11px}
+.block{margin:16px 0 6px;display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.block h2{font-size:14px;font-weight:800;color:var(--ice);text-transform:uppercase;letter-spacing:.6px}
+.block span{color:var(--mute);font-size:12.5px;text-align:right}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px;margin-bottom:8px}
+.card.alert{border-color:var(--warn);box-shadow:0 0 0 1px var(--warn) inset}
+.row{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
+.name{font-weight:700;font-size:15.5px}
+.meta{color:var(--mute);font-size:13px}
+.times{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:10px 0}
+.times div{background:var(--card2);border-radius:10px;padding:7px 9px}
+.times small{display:block;color:var(--mute);font-size:11px}
+.times b{font-size:17px;font-weight:800;font-variant-numeric:tabular-nums}
+.times s{color:var(--mute);font-weight:600;font-size:13px;margin-left:4px}
+.chip{display:inline-block;border-radius:999px;padding:3px 9px;font-size:11.5px;font-weight:700;white-space:nowrap}
+.c-prog{background:#24405f;color:var(--ink)}.c-air{background:#1f4f7a;color:#cfeaff}.c-land{background:var(--ok);color:var(--ink-dark)}
+.c-delay{background:var(--warn);color:var(--ink-dark)}.c-pick{background:#8b7bff;color:#fff}.c-done{background:#2c6e55;color:#e6fff4}.c-cancel{background:var(--bad);color:#fff}
+.states{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
+.states button{background:transparent;border:1px solid var(--line);color:var(--ink);border-radius:8px;padding:6px 9px;font:600 12.5px Manrope,sans-serif}
+.states button.on{background:var(--ice);color:var(--ink-dark);border-color:var(--ice)}
+.delay{display:none;gap:6px;align-items:center;margin-top:8px;font-size:13px;color:var(--mute)}
+.delay.show{display:flex}
+.delay input{width:70px;background:var(--card2);border:1px solid var(--line);color:var(--ink);border-radius:8px;padding:6px;font:700 15px Manrope,sans-serif;text-align:center}
+.actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.actions a{flex:1 1 auto;text-align:center;text-decoration:none;border-radius:10px;padding:9px 10px;font-weight:700;font-size:13px;border:1px solid var(--line);color:var(--ink);background:var(--card2)}
+.actions a.wa{background:#1f8f5a;border-color:#1f8f5a;color:#fff}
+.actions a.wa.warn{background:var(--warn);border-color:var(--warn);color:var(--ink-dark)}
+.msg{margin-top:8px;background:#2a2410;border:1px solid #5a4a12;border-radius:10px;padding:8px 10px;font-size:13px;color:#ffe9a8}
+.note{color:var(--mute);font-size:12.5px;margin-top:6px}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+td,th{padding:8px 6px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{color:var(--mute);font-weight:600;font-size:12px}
+.tag{font-size:11.5px;font-weight:700;color:var(--warn)}
+.foot{color:var(--mute);font-size:12px;margin-top:18px;line-height:1.5}
+.hide{display:none}
+.reset{background:none;border:1px solid var(--line);color:var(--mute);border-radius:8px;padding:6px 10px;font:600 12px Manrope,sans-serif;margin-top:8px}
+</style>
+</head>
+<body>
+<header>
+  <div class="top"><h1>PULSO <span>· Traslados</span></h1><div id="clock">--:--</div></div>
+  <div class="sub">26–27 nov · Hotel Bel Air (Dakota 95, Nápoles) · InSpace Del Valle · Chofer: Dante Mendoza</div>
+  <nav id="tabs">
+    <button data-t="llegadas" class="on">Llegadas 26</button>
+    <button data-t="evento">Hotel ↔ Evento</button>
+    <button data-t="salidas">Salidas 27</button>
+    <button data-t="rooming">Rooming</button>
+  </nav>
+</header>
+<main>
+  <section id="llegadas">
+    <div class="summary" id="sum"></div>
+    <div id="arr"></div>
+  </section>
+  <section id="evento" class="hide"></section>
+  <section id="salidas" class="hide"></section>
+  <section id="rooming" class="hide"></section>
+  <div class="foot">
+    Los estados se guardan en este teléfono. «Ver vuelo» abre el rastreo en vivo de cada vuelo. Los mensajes a doctores se abren en WhatsApp para que elijas el contacto.
+    <br><button class="reset" id="reset">Borrar estados de este teléfono</button>
+  </div>
+</main>
+<script>
+const DANTE='523221899656', HOTEL='Hotel Bel Air (Dakota 95, Col. Nápoles)', EVENTO='InSpace Del Valle';
+const F=[
+ {id:'marco',n:'Dr. Marco Aguilar',f:0,o:'Durango',v:'AM 2601',land:'07:45',b:1,pick:'08:15',to:'hotel',rv:'AM 2602',dep:'10:00',lobby:'07:00',sb:3},
+ {id:'hugo',n:'Dr. Hugo Villa',f:0,o:'Tampico',v:'AM 1413',land:'10:05',b:2,pick:'10:35',to:'hotel',rv:'AM 1412',dep:'11:35',lobby:'08:20',sb:4},
+ {id:'wilber',n:'Dr. Wilber Palma',f:0,o:'Tapachula',v:'AM 371',land:'10:40',b:3,pick:'11:25',to:'hotel',rv:'AM 372',dep:'12:40',lobby:'09:40',sb:5},
+ {id:'jose',n:'Dr. José Silva',f:0,o:'Guadalajara',v:'AM 215',land:'10:55',b:3,pick:'11:25',to:'hotel',rv:'AM 252',dep:'19:05',lobby:'16:05',sb:6},
+ {id:'alexandra',n:'Dra. Alexandra Garza',f:1,o:'Mexicali',v:'AM 191',land:'11:25',b:4,pick:'12:15',to:'hotel',rv:'AM 190',dep:'08:20',lobby:'05:15',sb:2},
+ {id:'daisy',n:'Dra. Daisy Jiménez',f:1,o:'Oaxaca',v:'AM 1051',land:'11:45',b:4,pick:'12:15',to:'hotel',rv:'AM 1048',dep:'11:10',lobby:'08:20',sb:4},
+ {id:'guadalupe',n:'Dra. Guadalupe Torres',f:1,o:'Zacatecas',v:'AM 2647',land:'11:50',b:4,pick:'12:15',to:'hotel',rv:'AM 2642',dep:'08:10',lobby:'05:15',sb:2},
+ {id:'fernando',n:'Dr. Fernando Valera',f:0,o:'Cd. Juárez',v:'AM 116',land:'12:45',b:5,pick:'13:40',to:'evento',rv:'AM 113',dep:'06:15',lobby:'03:45',sb:1},
+ {id:'rosario',n:'Dra. Rosario Graciano',f:1,o:'Los Mochis',v:'AM 2081',land:'13:10',b:5,pick:'13:40',to:'evento',rv:'AM 2080',dep:'07:45',lobby:'05:15',sb:2}
+];
+const BL={1:'Individual',2:'Individual',3:'Camioneta',4:'Camioneta',5:'Camioneta · directo a InSpace'};
+const ST=[['prog','Programado','c-prog'],['air','En vuelo','c-air'],['delay','Retrasado','c-delay'],['land','Aterrizó','c-land'],['pick','Con el chofer','c-pick'],['done','Entregado','c-done'],['cancel','Cancelado','c-cancel']];
+const KEY='pulso-traslados-v1';
+let S={}; try{S=JSON.parse(localStorage.getItem(KEY))||{}}catch(e){S={}}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+const toMin=t=>{const[h,m]=t.split(':').map(Number);return h*60+m};
+const fmt=m=>{m=((m%1440)+1440)%1440;return String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60).padStart(2,'0')};
+const fa=v=>'https://www.flightaware.com/live/flight/AMX'+v.replace(/\D/g,'');
+const wa=(num,t)=>'https://wa.me/'+(num||'')+'?text='+encodeURIComponent(t);
+const st=id=>S[id]||{s:'prog',d:0};
+const lo=(p,a,b)=>p.f?a:b;
+function eta(p){const x=st(p.id);return x.s==='delay'?toMin(p.land)+(+x.d||0):toMin(p.land)}
+function pickup(p){const late=eta(p)+30;return Math.max(toMin(p.pick),late)}
+function dest(p){return p.to==='hotel'?HOTEL:EVENTO}
+function welcome(p){
+  const pk=fmt(pickup(p));
+  return `${p.n}, bienvenid${lo(p,'a','o')} a la Ciudad de México. Soy el asistente de Blanca, de Polar. Su chofer Dante l${lo(p,'a','o')} espera a la salida de la Terminal 2 a las ${pk} para llevarl${lo(p,'a','o')} ${p.to==='hotel'?'a su hotel, el '+HOTEL+'. A las 13:30 sale la camioneta del hotel a '+EVENTO+'.':'directo a '+EVENTO+', a tiempo para el registro y la comida. Su equipaje va seguro en la camioneta.'}`;
+}
+function retorno(p){
+  let t=`${p.n}, para su regreso mañana 27: su vuelo ${p.rv} sale a las ${p.dep}. L${lo(p,'a','o')} vemos en el lobby del Bel Air a las ${p.lobby}.`;
+  if(['03:45','05:15'].includes(p.lobby)) t+=' El hotel tiene salida exprés: solo deje la llave en recepción.';
+  if(p.id==='jose') t+=' Estamos pidiendo que le extiendan la salida de su habitación; si no, le guardan su equipaje.';
+  return t;
+}
+function driverMsg(p){
+  const x=st(p.id);
+  if(x.s==='cancel') return `Dante, el vuelo ${p.v} de ${p.n} (bloque ${p.b}) se canceló. No vayas por ahora; te aviso el nuevo vuelo.`;
+  if(x.s==='delay') return `Dante, el vuelo ${p.v} de ${p.n} (bloque ${p.b}) viene con ${x.d} min de retraso. Nueva llegada: ${fmt(eta(p))}. Recogida en Terminal 2 a las ${fmt(pickup(p))}. Destino: ${dest(p)}.`;
+  if(x.s==='land') return `Dante, ya aterrizó ${p.n}, vuelo ${p.v} (bloque ${p.b}). Recogida en Terminal 2. Destino: ${dest(p)}.`;
+  return `Dante, bloque ${p.b}: ${p.n}, vuelo ${p.v}, aterriza ${p.land}. Recogida en Terminal 2 a las ${fmt(pickup(p))}. Destino: ${dest(p)}.`;
+}
+function chip(id){const s=st(id).s;const c=ST.find(x=>x[0]===s);return `<span class="chip ${c[2]}">${c[1]}${s==='delay'?' +'+st(id).d+'′':''}</span>`}
+function renderArr(){
+  const cnt=k=>F.filter(p=>st(p.id).s===k).length;
+  document.getElementById('sum').innerHTML=
+   `<div><b>${F.length}</b><small>Vuelos</small></div><div><b>${cnt('land')+cnt('pick')+cnt('done')}</b><small>Aterrizados</small></div><div><b style="color:var(--warn)">${cnt('delay')}</b><small>Retrasados</small></div><div><b style="color:var(--ok)">${cnt('done')}</b><small>Entregados</small></div>`;
+  let h='';
+  [1,2,3,4,5].forEach(b=>{
+    const ps=F.filter(p=>p.b===b);
+    const pk=Math.max(...ps.map(pickup));
+    const moved=pk!==toMin(ps[0].pick);
+    h+=`<div class="block"><h2>Bloque ${b} · ${fmt(pk)}</h2><span>${BL[b]}${moved?' · <span class="tag">recorrido</span>':''}</span></div>`;
+    if(ps.length>1&&moved){const late=ps.filter(p=>pickup(p)>toMin(p.pick)).map(p=>p.n).join(', ');h+=`<div class="msg">Por el retraso de ${late}, la recogida del bloque pasa a las ${fmt(pk)}. Si la espera para los demás pasa de 1 hora, conviene separar en dos viajes.</div>`}
+    ps.forEach(p=>{
+      const x=st(p.id), alert=x.s==='delay'&&(+x.d||0)>=20;
+      h+=`<div class="card${alert?' alert':''}" id="c-${p.id}">
+        <div class="row"><div><div class="name">${p.n}</div><div class="meta">${p.o} · ${p.v} · Terminal 2</div></div>${chip(p.id)}</div>
+        <div class="times"><div><small>Aterriza</small><b>${fmt(eta(p))}</b>${eta(p)!==toMin(p.land)?'<s>'+p.land+'</s>':''}</div><div><small>Recogida → ${p.to==='hotel'?'Hotel':'InSpace'}</small><b>${fmt(pickup(p))}</b>${pickup(p)!==toMin(p.pick)?'<s>'+p.pick+'</s>':''}</div></div>
+        <div class="states">${ST.map(s=>`<button data-id="${p.id}" data-s="${s[0]}" class="${x.s===s[0]?'on':''}">${s[1]}</button>`).join('')}</div>
+        <div class="delay ${x.s==='delay'?'show':''}">Retraso <input type="number" min="0" step="5" inputmode="numeric" data-d="${p.id}" value="${x.d||''}"> minutos</div>
+        ${alert?`<div class="msg">Retraso de ${x.d} min: avisa a Dante para que no entre antes al estacionamiento.${x.d>=60?' Pasa de 1 hora: revisa si conviene reacomodar el bloque.':''}</div>`:''}
+        <div class="actions">
+          <a href="${fa(p.v)}" target="_blank" rel="noopener">Ver vuelo</a>
+          <a class="wa ${x.s==='delay'||x.s==='cancel'?'warn':''}" href="${wa(DANTE,driverMsg(p))}" target="_blank" rel="noopener">Avisar a Dante</a>
+          <a class="wa" href="${wa('',welcome(p))}" target="_blank" rel="noopener">Bienvenida</a>
+        </div>
+      </div>`;
+    });
+  });
+  document.getElementById('arr').innerHTML=h;
+}
+function renderEvento(){
+  const T=[
+   ['11:30','Pachuca · frente a Peva → InSpace','Facundo García Membrillo','Transporte especial · no se hospeda'],
+   ['12:30','Llega de Puebla al hotel','Jaime Cisneros','Por su cuenta · early check-in'],
+   ['13:30','Hotel → InSpace','Marco, Hugo, Wilber, José, Alexandra, Daisy, Guadalupe, Jaime (+ Daniel si alcanza)','Camioneta 12 plazas · registro 14:00'],
+   ['13:40','Aeropuerto → InSpace','Fernando Valera, Rosario Graciano','Bloque 5 con maletas · llegan ~14:10'],
+   ['—','Toluca → InSpace','Lucina Ventura Toribio','Auto propio · va y regresa'],
+   ['Decide mañana','Toluca → Hotel o InSpace','Daniel Martínez Sánchez','Auto propio · pedir estacionamiento'],
+   ['22:45','InSpace → Hotel','Los 9 de avión + Jaime (10)','Camioneta 12 plazas · cena termina 22:40 · lleva maletas de Fernando y Rosario'],
+   ['22:45','InSpace → Pachuca','Facundo García Membrillo','Llega ~00:30']];
+  document.getElementById('evento').innerHTML=`<div class="block"><h2>Jueves 26</h2><span>Agenda: registro 14:00 · comida 14:30 · cena hasta 22:40</span></div>`+
+   T.map(t=>`<div class="card"><div class="row"><div><div class="name">${t[1]}</div><div class="meta">${t[2]}</div></div><span class="chip c-prog">${t[0]}</span></div><div class="note">${t[3]}</div></div>`).join('')+
+   `<div class="actions"><a class="wa" href="${wa(DANTE,'Dante, recordatorio de hoy: 13:30 camioneta de 12 plazas del Hotel Bel Air (Dakota 95, Nápoles) a InSpace Del Valle. Regreso a las 22:45 de InSpace al hotel, 10 pasajeros. Facundo: 11:30 frente a Peva en Pachuca y regreso a Pachuca a las 22:45.')}" target="_blank" rel="noopener">Recordatorio a Dante</a></div>`;
+}
+function renderSal(){
+  const blocks={};F.forEach(p=>(blocks[p.lobby]=blocks[p.lobby]||[]).push(p));
+  let h='<div class="block"><h2>Viernes 27</h2><span>Bel Air → Terminal 2 · express checkout: solo dejan la llave</span></div>';
+  Object.keys(blocks).sort().forEach(t=>{
+    const ps=blocks[t];
+    h+=`<div class="card"><div class="row"><div class="name">Lobby ${t}</div><span class="chip c-prog">${ps.length>1?'Camioneta':'Individual'}</span></div>`+
+    ps.map(p=>`<div class="meta" style="margin-top:6px">${p.n} · ${p.rv} despega ${p.dep}</div>`).join('')+
+    (t==='16:05'?'<div class="note">Pedir late checkout o guardado de maletas (check-out 12:00).</div>':'')+
+    `<div class="actions"><a href="${fa(ps[0].rv)}" target="_blank" rel="noopener">Ver vuelo</a>${ps.map(p=>`<a class="wa" href="${wa('',retorno(p))}" target="_blank" rel="noopener">Aviso ${p.n.split(' ').slice(1,2)}</a>`).join('')}</div></div>`;
+  });
+  h+=`<div class="actions"><a class="wa" href="${wa(DANTE,'Dante, salidas del viernes 27 del Hotel Bel Air a Terminal 2: '+Object.keys(blocks).sort().map(t=>t+' '+blocks[t].map(p=>p.n.replace(/Dr[a]?\. /,'')+' ('+p.rv+' '+p.dep+')').join(' y ')).join(' · '))}" target="_blank" rel="noopener">Mandar salidas a Dante</a></div>`;
+  document.getElementById('salidas').innerHTML=h;
+}
+function renderRoom(){
+  const R=[['Marco Aguilar','Durango','Sí · prioridad (~08:45)',''],['Hugo Villa','Tampico','Sí (~11:05)',''],['Wilber Palma','Tapachula','Sí (~12:00)',''],['José Silva','Guadalajara','Sí (~12:00)','Late checkout'],['Alexandra Garza','Mexicali','Sí (~12:45)',''],['Daisy Jiménez','Oaxaca','Sí (~12:45)',''],['Guadalupe Torres','Zacatecas','Sí (~12:45)',''],['Jaime Cisneros','Puebla','Sí (12:30)',''],['Daniel Martínez','Toluca','Por confirmar','Estacionamiento'],['Fernando Valera','Cd. Juárez','No (~23:00)',''],['Rosario Graciano','Los Mochis','No (~23:00)','']];
+  document.getElementById('rooming').innerHTML=`<div class="block"><h2>Hotel Bel Air</h2><span>11 sencillas · 26 → 27 nov · check-in 15:00 · check-out 12:00</span></div><div class="card"><table><tr><th>Huésped</th><th>Early check-in</th><th>Nota</th></tr>${R.map(r=>`<tr><td><b>${r[0]}</b><br><span class="meta">${r[1]}</span></td><td>${r[2]}</td><td>${r[3]}</td></tr>`).join('')}</table></div>`;
+}
+function render(){renderArr();renderEvento();renderSal();renderRoom()}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.states button');
+  if(b){const id=b.dataset.id;S[id]=Object.assign(st(id),{s:b.dataset.s});if(b.dataset.s==='delay'&&!S[id].d)S[id].d=20;save();renderArr();return}
+  const t=e.target.closest('#tabs button');
+  if(t){document.querySelectorAll('#tabs button').forEach(x=>x.classList.toggle('on',x===t));['llegadas','evento','salidas','rooming'].forEach(s=>document.getElementById(s).classList.toggle('hide',s!==t.dataset.t));try{localStorage.setItem(KEY+'-tab',t.dataset.t)}catch(e){}}
+});
+document.addEventListener('change',e=>{const i=e.target.closest('[data-d]');if(i){S[i.dataset.d]=Object.assign(st(i.dataset.d),{d:Math.max(0,+i.value||0)});save();renderArr()}});
+document.getElementById('reset').onclick=()=>{S={};save();renderArr()};
+const tick=()=>{document.getElementById('clock').textContent=new Date().toLocaleTimeString('es-MX',{hour:'2-digit',minute:'2-digit',timeZone:'America/Mexico_City'})};
+tick();setInterval(tick,20000);render();
+try{const t=localStorage.getItem(KEY+'-tab');if(t)document.querySelector(`#tabs button[data-t="${t}"]`)?.click()}catch(e){}
+</script>
+</body>
+</html>
